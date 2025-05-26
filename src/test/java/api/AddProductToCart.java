@@ -1,9 +1,12 @@
+package api;
+
+import config.TestBaseAPI;
 import org.junit.jupiter.api.Test;
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.is;
 import io.github.cdimascio.dotenv.Dotenv;
 
-public class AddProductToCart extends TestBase {
+public class AddProductToCart extends TestBaseAPI {
 
     private static String COOKIEVALUE;
     @Test

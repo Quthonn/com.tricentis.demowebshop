@@ -2,8 +2,6 @@ package config;
 
 import com.codeborne.selenide.Configuration;
 import io.github.cdimascio.dotenv.Dotenv;
-import io.qameta.allure.Allure;
-import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 
@@ -29,6 +27,4 @@ public class TestBase {
     public void AfterEach() {
         open("/logout");
     }
-
-
 }

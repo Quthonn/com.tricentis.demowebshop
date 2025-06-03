@@ -22,8 +22,6 @@ public class AddProductInCart extends TestBase {
         getWebDriver().manage().addCookie(
                 new Cookie("NOPCOMMERCE.AUTH", COOKIEVALUE)
         );
-
-        open("/");
     }
 
     @Test
@@ -36,14 +34,25 @@ public class AddProductInCart extends TestBase {
     @Description("Этот тест проверяет, что пользователь может добавить " +
             "товар в корзину.")
     public void search() {
-        $$(".picture").filter(visible).get(1).scrollTo().click();
-        String ProductName = $(".product-name").getText();
-        System.out.println("Название товара: " + ProductName);
+        Allure.step("Открытие сайта", () -> {
+            open("/");
+        });
 
-        $(".add-to-cart-button").click();
-        String notificationMessage = $(".bar-notification").shouldBe(visible).getText();
-        System.out.println("Уведомление: " + notificationMessage);
+        Allure.step("Переход на страницу товара", () -> {
+            $$(".picture").filter(visible).get(1).scrollTo().click();
+            String ProductName = $(".product-name").getText();
+            System.out.println("Название товара: " + ProductName);
+        });
 
-        assertEquals("  The product has been added to your shopping cart", notificationMessage);
+        Allure.step("Нажать 'Добавить в корзину'", () -> {
+            $(".add-to-cart-button").click();
+
+        });
+
+        Allure.step("Проверка добавлен ли товар в корзину", () -> {
+            String notificationMessage = $(".bar-notification").shouldBe(visible).getText();
+            System.out.println("Уведомление: " + notificationMessage);
+            assertEquals("  The product has been added to your shopping cart", notificationMessage);
+        });
     }
 }

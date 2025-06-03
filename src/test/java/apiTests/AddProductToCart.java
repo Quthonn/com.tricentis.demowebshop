@@ -27,7 +27,7 @@ public class AddProductToCart extends TestBaseAPI {
     @Owner("Quthon")
     @Description("Этот тест проверяет, что пользователь может добавить " +
             "товар в корзину.")
-    void addToCartTest() {
+    public void addToCartTest() {
         Dotenv dotenv = Dotenv.load();
         COOKIEVALUE = dotenv.get("COOKIEVALUE");
 
@@ -51,5 +51,23 @@ public class AddProductToCart extends TestBaseAPI {
             assertEquals("The product has been added to your <a href=\"/cart\">shopping cart</a>",
                     response.jsonPath().getString("message"));
         });
+    }
+
+    public void addToCart(String cookieValue) {
+        String COOKIEVALUE;
+        Dotenv dotenv = Dotenv.load();
+        COOKIEVALUE = dotenv.get("COOKIEVALUE");
+        given(RequestSpec)
+                .cookie("NOPCOMMERCE.AUTH", cookieValue)
+                .formParam("product_attribute_72_5_18", "53")
+                .formParam("product_attribute_72_6_19", "54")
+                .formParam("product_attribute_72_3_20", "57")
+                .formParam("addtocart_72.EnteredQuantity", "1")
+                .when()
+                .post("/addproducttocart/details/72/1")
+                .then()
+                .spec(ResponseSpec)
+                .extract()
+                .response();
     }
 }

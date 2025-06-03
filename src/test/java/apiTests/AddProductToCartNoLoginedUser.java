@@ -17,7 +17,7 @@ public class AddProductToCartNoLoginedUser extends TestBaseAPI {
     @Test
     @Feature("Тестирование добавления товара в корзину без авторизации")
     @Story("Пользователь добавляет товар в корзину без авторизации")
-    @Severity(SeverityLevel.CRITICAL)
+    @Severity(SeverityLevel.TRIVIAL)
     @Tag("Positive")
     @DisplayName("Тест добавления товара в гостевую корзину")
     @Owner("Quthon")

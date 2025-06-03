@@ -14,14 +14,15 @@ public class SearchProduct extends TestBase {
     @Feature("Тестирование поиска")
     @Story("Пользователь в поиске вводит название товара")
     @Severity(SeverityLevel.NORMAL)
-    @Tag("positive")
+    @Tag("Positive")
     @DisplayName("Тест поиска")
     @Owner("Quthon")
     @Description("Этот тест проверяет, что пользователь может в поиске все найти.")
-    @ParameterizedTest(name = "Поиск по слову")
+    @ParameterizedTest(name = "(Поиск по слову: {0})")
     @ValueSource(strings = {"laptop", "book"})
     public void search(String query) {
-        searchPage.searchProduct(query)
+        searchPage.openSite()
+                .searchProduct(query)
                 .viewFoundedProducts(query);
     }
 }

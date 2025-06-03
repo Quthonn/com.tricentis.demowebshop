@@ -12,13 +12,14 @@ public class Auth extends TestBase {
     @Feature("Тестирование авторизации")
     @Story("Пользователь авторизуется вводом почты и пароля")
     @Severity(SeverityLevel.CRITICAL)
-    @Tag("positive")
+    @Tag("Positive")
     @Test
     @DisplayName("Тест авторизации на сайт")
     @Owner("Quthon")
     @Description("Этот тест проверяет, что пользователь может авторизоваться.")
     public void auth() {
-        loginPage.openLoginPage()
+        loginPage.openSite()
+                .openLoginPage()
                 .setMail(MAIL)
                 .setPassword(PASSWORD)
                 .loginButtonClick()

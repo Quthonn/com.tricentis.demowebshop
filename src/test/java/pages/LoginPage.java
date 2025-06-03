@@ -2,8 +2,8 @@ package pages;
 
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Allure;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.$$;
+
+import static com.codeborne.selenide.Selenide.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class LoginPage {
@@ -13,6 +13,13 @@ public class LoginPage {
     passwordClick = $("#Password"),
     loginButton = $(".login-button"),
     mail = $$("a[href='/customer/info']").get(0);
+
+    public LoginPage openSite() {
+        Allure.step("Открытие сайта", () -> {
+            open("/");
+        });
+        return this;
+    }
 
     public LoginPage openLoginPage() {
         Allure.step("Переход в окно авторизации", () -> {

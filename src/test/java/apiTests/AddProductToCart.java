@@ -1,6 +1,9 @@
 package apiTests;
 
 import config.TestBaseAPI;
+import io.qameta.allure.*;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 import static io.qameta.allure.Allure.step;
@@ -13,9 +16,17 @@ import static specs.AddProductToCartSpec.ResponseSpec;
 import io.github.cdimascio.dotenv.Dotenv;
 
 public class AddProductToCart extends TestBaseAPI {
-
     private static String COOKIEVALUE;
+
     @Test
+    @Feature("Тестирование добавления товара в корзину")
+    @Story("Пользователь добавляет товар в корзину")
+    @Severity(SeverityLevel.CRITICAL)
+    @Tag("Positive")
+    @DisplayName("Тест добавления товара")
+    @Owner("Quthon")
+    @Description("Этот тест проверяет, что пользователь может добавить " +
+            "товар в корзину.")
     void addToCartTest() {
         Dotenv dotenv = Dotenv.load();
         COOKIEVALUE = dotenv.get("COOKIEVALUE");

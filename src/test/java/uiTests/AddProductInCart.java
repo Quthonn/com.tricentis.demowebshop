@@ -5,10 +5,9 @@ import io.github.cdimascio.dotenv.Dotenv;
 import io.qameta.allure.*;
 import org.junit.jupiter.api.*;
 import org.openqa.selenium.Cookie;
-import static com.codeborne.selenide.Condition.visible;
+import pages.AddProductCartPage;
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class AddProductInCart extends TestBase {
     private static String COOKIEVALUE;
@@ -24,6 +23,8 @@ public class AddProductInCart extends TestBase {
         );
     }
 
+    AddProductCartPage addProductCartPage = new AddProductCartPage();
+
     @Test
     @Feature("Тестирование добавления товара в корзину")
     @Story("Пользователь добавляет товар в корзину")
@@ -34,25 +35,9 @@ public class AddProductInCart extends TestBase {
     @Description("Этот тест проверяет, что пользователь может добавить " +
             "товар в корзину.")
     public void search() {
-        Allure.step("Открытие сайта", () -> {
-            open("/");
-        });
-
-        Allure.step("Переход на страницу товара", () -> {
-            $$(".picture").filter(visible).get(1).scrollTo().click();
-            String ProductName = $(".product-name").getText();
-            System.out.println("Название товара: " + ProductName);
-        });
-
-        Allure.step("Нажать 'Добавить в корзину'", () -> {
-            $(".add-to-cart-button").click();
-
-        });
-
-        Allure.step("Проверка добавлен ли товар в корзину", () -> {
-            String notificationMessage = $(".bar-notification").shouldBe(visible).getText();
-            System.out.println("Уведомление: " + notificationMessage);
-            assertEquals("  The product has been added to your shopping cart", notificationMessage);
-        });
+        addProductCartPage.openSite()
+                .goToProductPage()
+                .addProductToCart()
+                .checkResult();
     }
 }

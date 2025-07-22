@@ -5,11 +5,8 @@ import io.github.cdimascio.dotenv.Dotenv;
 import io.restassured.RestAssured;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
-
 import static io.qameta.allure.Allure.step;
 import static io.restassured.RestAssured.given;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 import static specs.AddProductToCartSpec.RequestSpec;
 import static specs.AddProductToCartSpec.ResponseSpec;
 

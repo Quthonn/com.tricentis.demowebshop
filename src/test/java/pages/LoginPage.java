@@ -2,7 +2,6 @@ package pages;
 
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Allure;
-
 import static com.codeborne.selenide.Selenide.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 

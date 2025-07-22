@@ -8,11 +8,10 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.Cookie;
-
+import pages.DeleteProductToCartPage;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class DeleteProductInCart extends TestBase {
     private static String COOKIEVALUE;
@@ -35,11 +34,10 @@ public class DeleteProductInCart extends TestBase {
             $(".add-to-cart-button").click();
         });
 
-        Allure.step("Д", () -> {
-
-        });
 //        TestBaseForDeleteProductTest.addToCartTestCall();
     }
+
+    DeleteProductToCartPage deleteProductToCartPage = new DeleteProductToCartPage();
 
     @Test
     @Feature("Тестирование удаления товаров из корзины")
@@ -51,27 +49,11 @@ public class DeleteProductInCart extends TestBase {
     @Description("Этот тест проверяет, что пользователь может удалить " +
             "товары из корзины.")
     public void delete() {
-        Allure.step("Открытие сайта", () -> {
-            open("/");
-        });
+        deleteProductToCartPage.openSite()
+                .goToCart()
+                .selectAllProducts()
+                .clickButtonUpdateCart()
+                .checkResult();
 
-        Allure.step("Вход в корзину", () -> {
-            $("#topcartlink").click();
-        });
-
-        Allure.step("Выделение всех товаров по CheckBox предусмотренных для удаления", () -> {
-            $$("[type=checkbox]").forEach(checkbox -> checkbox.click());
-        });
-
-        Allure.step("Нажать кнопку обновления корзины", () -> {
-            $(".update-cart-button").click();
-        });
-
-        Allure.step("Проверка стала ли корзина пустой после удаления всех товаров", () -> {
-            String textInCart = $(".order-summary-content").getText();
-            System.out.println(textInCart);
-
-            assertEquals("Your Shopping Cart is empty!", textInCart);
-        });
     }
 }

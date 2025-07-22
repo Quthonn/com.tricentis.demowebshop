@@ -4,7 +4,6 @@ import com.codeborne.selenide.Configuration;
 import io.github.cdimascio.dotenv.Dotenv;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
-
 import static com.codeborne.selenide.Selenide.open;
 
 public class TestBase {

@@ -1,29 +1,18 @@
 package uiTests;
 
 import config.TestBase;
-import io.github.cdimascio.dotenv.Dotenv;
 import io.qameta.allure.*;
 import org.junit.jupiter.api.*;
-import org.openqa.selenium.Cookie;
 import pages.AddProductCartPage;
-import static com.codeborne.selenide.Selenide.*;
-import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 
 public class AddProductInCart extends TestBase {
-    private static String COOKIEVALUE;
+    TestBase testBase = new TestBase();
+    AddProductCartPage addProductCartPage = new AddProductCartPage();
 
     @BeforeEach
     public void BeforeEach() {
-        Dotenv dotenv = Dotenv.load();
-        COOKIEVALUE = dotenv.get("COOKIEVALUE");
-        open("/Themes/DefaultClean/Content/images/logo.png");
-
-        getWebDriver().manage().addCookie(
-                new Cookie("NOPCOMMERCE.AUTH", COOKIEVALUE)
-        );
+        testBase.Login();
     }
-
-    AddProductCartPage addProductCartPage = new AddProductCartPage();
 
     @Test
     @Feature("Тестирование добавления товара в корзину")

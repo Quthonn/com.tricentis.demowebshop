@@ -7,10 +7,13 @@
         <processorPath useClasspath="false">
           <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.projectlombok/lombok/1.18.20/18bcea7d5df4d49227b4a0743a536208ce4825bb/lombok-1.18.20.jar" />
         </processorPath>
-        <module name="com.tricentis.demowebshop.main" />
-        <module name="com.tricentis.demowebshop.test" />
+        <module name="DemoWebShop_Web_Tests.main" />
+        <module name="DemoWebShop_Web_Tests.test" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel target="17" />
+    <bytecodeTargetLevel target="21" />
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_STRING" value="-Xlint:-processing" />
   </component>
 </project>

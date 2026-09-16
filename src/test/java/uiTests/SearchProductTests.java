@@ -8,7 +8,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import pages.SearchPage;
 
-public class SearchProduct extends TestBase {
+public class SearchProductTests extends TestBase {
     SearchPage searchPage = new SearchPage();
 
     @Feature("Тестирование поиска")

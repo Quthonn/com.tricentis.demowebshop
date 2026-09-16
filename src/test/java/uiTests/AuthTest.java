@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import pages.LoginPage;
 
-public class Auth extends TestBase {
+public class AuthTest extends TestBase {
     LoginPage loginPage = new LoginPage();
 
     @Feature("Тестирование авторизации")

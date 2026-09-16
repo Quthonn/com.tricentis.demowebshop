@@ -2,6 +2,8 @@ package pages;
 
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Allure;
+import io.qameta.allure.Step;
+
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -13,35 +15,35 @@ public class AddProductCartPage {
             addToCartButtonSelector = $(".add-to-cart-button"),
             barNotificationSelector = $(".bar-notification");
 
+    @Step("Открытие сайта")
     public AddProductCartPage openSite() {
-        Allure.step("Открытие сайта", () -> {
-            open("/");
-        });
+        open("/");
+
         return this;
     }
 
+    @Step("Переход на страницу товара")
     public AddProductCartPage goToProductPage() {
-        Allure.step("Переход на страницу товара", () -> {
-            $(productImageSelector).scrollTo().click();
-            String ProductName = $(productNameSelector).getText();
-            System.out.println("Название товара: " + ProductName);
-        });
+        $(productImageSelector).scrollTo().click();
+        String ProductName = $(productNameSelector).getText();
+        System.out.println("Название товара: " + ProductName);
+
         return this;
     }
 
+    @Step("Нажать 'Добавить в корзину'")
     public AddProductCartPage addProductToCart() {
-        Allure.step("Нажать 'Добавить в корзину'", () -> {
-            $(addToCartButtonSelector).click();
-        });
+        $(addToCartButtonSelector).click();
+
         return this;
     }
 
+    @Step("Проверка добавлен ли товар в корзину")
     public AddProductCartPage checkResult() {
-        Allure.step("Проверка добавлен ли товар в корзину", () -> {
-            String notificationMessage = $(barNotificationSelector).shouldBe(visible).getText();
-            System.out.println("Уведомление: " + notificationMessage);
-            assertEquals("  The product has been added to your shopping cart", notificationMessage);
-        });
+        String notificationMessage = $(barNotificationSelector).shouldBe(visible).getText();
+        System.out.println("Уведомление: " + notificationMessage);
+        assertEquals("  The product has been added to your shopping cart", notificationMessage);
+
         return this;
     }
 }

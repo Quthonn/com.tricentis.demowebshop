@@ -16,7 +16,7 @@ allure {
         aspectjVersion.set("1.9.22.1")
 
         // Customize environment variables for launching Allure
-        environment.put("JAVA_HOME", "/path/to/java_home")
+//        environment.put("JAVA_HOME", "/path/to/java_home")
 
         autoconfigure.set(true)
         autoconfigureListeners.set(true)
@@ -24,11 +24,11 @@ allure {
 
         // By default, categories.json is detected in src/test/resources/../categories.json,
         // However, it would be better to put the file in a well-known location and configure it explicitly
-        categoriesFile.set(layout.projectDirectory.file("config/allure/categories.json"))
+//        categoriesFile.set(layout.projectDirectory.file("config/allure/categories.json"))
         frameworks {
             junit5 {
                 // Defaults to allureJavaVersion
-                adapterVersion.set("2.19")
+//                adapterVersion.set("2.19")
                 enabled.set(true)
                 // Enables allure-junit4 default test listeners via META-INF/services/...
                 autoconfigureListeners.set(true)
@@ -60,12 +60,12 @@ dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter'
     testImplementation 'com.codeborne:selenide:6.19.1'
     testImplementation 'org.slf4j:slf4j-simple:2.0.6'
-    testImplementation 'io.qameta.allure:allure-selenide:2.19.0'
+    testImplementation 'io.qameta.allure:allure-selenide:2.28.0'
     testImplementation 'io.qameta.allure:allure-junit5:2.28.0'
     testImplementation 'io.rest-assured:rest-assured:5.4.0'
     implementation 'io.github.cdimascio:dotenv-java:3.0.0'
     testImplementation 'io.github.cdimascio:dotenv-java:2.2.0'
-    testImplementation 'io.qameta.allure:allure-rest-assured:2.29.1'
+    testImplementation 'io.qameta.allure:allure-rest-assured:2.28.0'
 
 
 

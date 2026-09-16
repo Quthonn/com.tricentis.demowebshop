@@ -2,6 +2,8 @@ package pages;
 
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Allure;
+import io.qameta.allure.Step;
+
 import static com.codeborne.selenide.Selenide.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -13,46 +15,45 @@ public class LoginPage {
     loginButton = $(".login-button"),
     mail = $$("a[href='/customer/info']").get(0);
 
+    @Step("Открыть сайт")
     public LoginPage openSite() {
-        Allure.step("Открытие сайта", () -> {
-            open("/");
-        });
+        open("/");
+
         return this;
     }
 
+    @Step("Переход в окно авторизации")
     public LoginPage openLoginPage() {
-        Allure.step("Переход в окно авторизации", () -> {
-            openLoginPageClick.click();
-        });
+        openLoginPageClick.click();
+
         return this;
     }
 
+    @Step("Ввод почты")
     public LoginPage setMail(String value) {
-        Allure.step("Ввод почты", () -> {
-            mailClick.setValue(value);
-        });
+        mailClick.setValue(value);
+
         return this;
     }
 
+    @Step("Ввод пароля")
     public LoginPage setPassword(String value) {
-        Allure.step("Ввод пароля", () -> {
-            passwordClick.setValue(value);
-        });
+        passwordClick.setValue(value);
+
         return this;
     }
 
+    @Step("Нажать кнопку 'Log in'")
     public LoginPage loginButtonClick() {
-        Allure.step("Нажать кнопку 'Log in'", () -> {
-            loginButton.click();
-        });
+        loginButton.click();
+
         return this;
     }
 
+    @Step("Проверка авторизации")
     public LoginPage checkAuth(String value) {
-        Allure.step("Проверка авторизации", () -> {
-            assertEquals(value,
-                    mail.getText());
-        });
+        assertEquals(value, mail.getText());
+
         return this;
     }
 }

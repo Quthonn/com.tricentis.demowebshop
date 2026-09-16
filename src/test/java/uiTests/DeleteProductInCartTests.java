@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import pages.DeleteProductToCartPage;
 
-public class DeleteProductInCart extends TestBase {
+public class DeleteProductInCartTests extends TestBase {
     TestBaseForDeleteProduct befofeEach = new TestBaseForDeleteProduct();
     DeleteProductToCartPage deleteProductToCartPage = new DeleteProductToCartPage();
 

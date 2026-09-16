@@ -5,7 +5,7 @@ import io.qameta.allure.*;
 import org.junit.jupiter.api.*;
 import pages.AddProductCartPage;
 
-public class AddProductInCart extends TestBase {
+public class AddProductInCartTests extends TestBase {
     TestBase testBase = new TestBase();
     AddProductCartPage addProductCartPage = new AddProductCartPage();
 
